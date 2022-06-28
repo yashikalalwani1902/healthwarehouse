@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1 class="text-uppercase text-center"> Order Rating Section </h1>
+<hr>
+<div class="row">
+    <div class="col-md-6">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="text-center">
+                    <h5 >Name :  {{ o.medicine.name }} </h5> 
+                    <p >Price :  {{ o.medicine.price }} </p>
+                    <h6 >Expiry Date :  {{ o.medicine.exp_date }} </h6> 
+                   </div> 
+        
+            </div>
+            <div class="col-md-6">
+                <h6 class="text-uppercase text-center">Medicine's Preview:</h6><br>
+                <img class="img-thumbnail" width="100%" src="/media/{{ o.medicine.medicine_img }}" alt="Medicine image not found">
+            
+            </div>
+        </div>
+     </div>
+
+  <div class="col-md-6">
+    <div class=" mt-5 text-justify">
+    	
+         <h5 >Order Date :  {{ o.cr_date }} </h5> 
+         <h5 >Quantity :  {{ o.quantity }} </h5> 
+         <h5 >Status :  {{ o.delivery_status }} </h5>
+         <hr>
+         <form action="{% url 'order_rating_done' %}" method="POST">
+            {% csrf_token %}
+             <input type="hidden" name="o_id" value="{{ o.id }}" > 
+             
+             <div class="form-group">
+                <label >Select Rating</label>
+                <select class="form-control" name="rating">
+                  <option value="1">One Rating</option>
+                  <option value="2">Two Rating</option>
+                  <option value="3">Three Rating</option>
+                  <option value="4">Four Rating</option>
+                  <option value="5">Five Rating</option>
+                </select>
+              </div>
+              
+              <div class="form-group">
+                <label >Review / Comment</label>
+                <textarea class="form-control" name="comment" rows="3"></textarea>
+              </div>
+             
+             <input type="submit" class="btn btn-secondary btn-block" value="Done">
+         <a href="{% url 'orders' %}" class="btn btn-outline-secondary btn-block">Back</a>
+         </form>
+          
+    </div>
+</div>   
+
+<!-- name, description, medicine_img, price 
+mfg_date , exp_date ,cr_date
+-->
+</div>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<h1 class="text-uppercase text-center"> Order Section </h1>
+<div class="p-3">
+   <div >
+       <table style="width: 100%" class="table">
+           <thead class="thead-default thead-dark">
+               <!-- medicine, quantity, delivery_status,cr_date -->
+               <tr>
+                   <th>Medicine Name</th>
+                   <th>Quantity</th>
+                   <th>Total Price</th>
+                   <th>Delivery Status</th>
+                   <th>Order Date</th>         
+                   <th colspan="2">Action</th>         
+                           
+               </tr>
+               </thead>
+               <tbody>
+                   {% for o in orders %}
+                   <tr>
+                       <td>{{ o.medicine }}</td>
+                       <td>{{ o.quantity }}</td>
+                       <td>{{ o.total_price }}</td>
+                       <td>{{ o.delivery_status }}</td>
+                       <td>{{ o.cr_date }}</td>
+                       <td><a href="{% url 'med_detail' o.medicine.id %}">View</a></td>
+                       <td><a href="{% url 'order_review' o.id %}">Rate</a></td>
+                    </tr>
+                   {% endfor %}
+               </tbody>
+       </table>
+   </div>
+<!-- name, description, medicine_img, price -->
+</div>
+{% endblock %}

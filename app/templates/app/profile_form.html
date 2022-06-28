@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+<div class="h1 text-center">
+    {{ user }}'s <span class="text-uppercase"> Profile Update Form</span>
+</div>
+<div class="row mt-5">
+    <div class="col-sm-8 offset-2">
+        <form method="post">
+            {% csrf_token %}
+            
+            <div id="div_id_bio" class="control-group"> 
+                <label for="id_bio" class="control-label requiredField">
+                    Bio<span class="asteriskField">*</span> </label>
+                <div class="controls"> 
+                    <textarea name="bio" cols="30" rows="3" class="textarea form-control" required=""
+                        id="id_bio"></textarea> </div>
+            </div>
+            <div id="div_id_disease" class="control-group"> <label for="id_disease" class="control-label requiredField">
+                    Disease<span class="asteriskField">*</span> </label>
+                <div class="controls"> <textarea name="disease" cols="30" rows="3" class="textarea form-control" required=""
+                        id="id_disease"></textarea> </div>
+            </div>
+            <div id="div_id_age" class="control-group"> <label for="id_age" class="control-label requiredField">
+                    Age<span class="asteriskField">*</span> </label>
+                <div class="controls"> <input type="number" name="age" class="numberinput form-control" required="" id="id_age"> </div>
+            </div>
+            <div id="div_id_full_address" class="control-group"> <label for="id_full_address"
+                    class="control-label requiredField">
+                    Full address<span class="asteriskField">*</span> </label>
+                <div class="controls"> <textarea name="full_address" cols="30" rows="3" class="textarea form-control" required=""
+                        id="id_full_address"></textarea> </div>
+            </div>
+            <div id="div_id_contact_no" class="control-group"> <label for="id_contact_no" class="control-label requiredField">
+                    Contact no<span class="asteriskField">*</span> </label>
+                <div class="controls"> <input type="text" name="contact_no" maxlength="20" class="textinput textInput form-control"
+                        required="" id="id_contact_no"> </div>
+            </div>
+            <input type="submit" value="Submit" />
+        </form>
+        
+    </div>
+
+</div>
+
+{% endblock %}

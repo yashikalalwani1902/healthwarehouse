@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1 class="text-uppercase text-center"> {{ medicine.name }}'s Detail Page </h1>
+<hr>
+<div class="row">
+  <div class="col-md-6">
+    <div class="text-justify">
+         <h5 >Name :  {{ medicine.name }} </h5> 
+         <p >About :  {{ medicine.description }} </p> 
+         <p >Price :  {{ medicine.price }} </p>
+         <h6 >Manufactured Date :  {{ medicine.mfg_date }} </h6>
+         <h6 >Expiry Date :  {{ medicine.exp_date }} </h6>
+         <p >Published Date :  {{ medicine.cr_date }} </p>
+          
+         <a href="{% url 'store' %}" class="btn btn-outline-secondary btn-block">Back</a>
+         <a href="/app/store/medicine/cart/{{ medicine.id }}" class="btn btn-secondary btn-block">Buy</a>  
+           
+    </div>
+    <hr>
+    <div>
+      <h3>{{ medicine.name }}'s Review </h3>
+      {% if reviews|length == 0 %}
+      <p>No reviews found</p>
+      {% else %}
+      {% for review in reviews %}
+      <i>
+        "{{ review.comment }}",Rated - {{ review.rating }} <br>
+        ~ <strong>{{ review.orders.user }}</strong>
+        </i>
+         <br>
+      {% endfor %}
+      {% endif %}
+    
+    </div>
+</div>   
+ <div class="col-md-6">
+   <div class="pt-3 pl-5 pr-5 pb-1">
+    <h6 class="text-uppercase text-center">Medicine's Preview:</h6><br>
+    <img class="img-thumbnail" width="100%" src="/media/{{ medicine.medicine_img }}" alt="Medicine image not found">
+   </div>
+</div>
+<!-- name, description, medicine_img, price 
+mfg_date , exp_date ,cr_date
+-->
+</div>
+{% endblock %}

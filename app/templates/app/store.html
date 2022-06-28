@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<h1 class="text-uppercase text-center"> Medicine Store </h1>
+<div class="row">
+    {% for med in medicine_list %}
+    <div class="col-md-4">
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="/media/{{ med.medicine_img }}" alt="Medicine image not found">
+            <div class="card-body">
+              <h5 class="card-title"> {{ med.name }} </h5>
+              <!-- <p class="card-text">About Medicine :  {{ med.description }} </p> -->
+              <p class="card-text">Price :  {{ med.price }} </p>
+              <!-- <p class="card-text">Img :  {{ med.medicine_img }} </p> -->
+              <a href="{% url 'med_detail' med.id %}" class="btn btn-outline-secondary">View Details</a>
+              <!-- <form action="{% url 'med_cart' med.id %}" method="get">
+                <input type="hidden" name="id" value="{{ med.id }}">
+                <input type="submit" class="btn btn-secondary" value="Buy"></input>
+              </form> -->
+              <a href="/app/store/medicine/cart/{{ med.id }}" class="btn btn-secondary">Buy</a>
+            </div>
+          </div>
+    </div>
+    {% endfor %}
+<!-- name, description, medicine_img, price -->
+</div>
+{% endblock %}

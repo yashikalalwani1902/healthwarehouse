@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+{% if request.GET.msg == 0 %}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong>NOTIFICATION!</strong> Something went wrong try again later.
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+{% elif request.GET.msg == 1 %}
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong>NOTIFICATION!</strong> Enquiry form submitted successfully.
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  {% endif %}
+    
+<div class="h3 text-uppercase "> Overview </div>
+<hr>
+<div class="row">
+
+    <div class="col-md-6">
+        <div class="h4"> Objective</div>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut a dui sed ipsum suscipit tincidunt. Nulla odio sem, mollis non maximus ut, hendrerit id urna. Quisque id velit ac lorem facilisis scelerisque sed eu sem. Integer vulputate massa sed tempor pretium. Fusce sit amet maximus ipsum. Nulla eu mauris in neque aliquam molestie. Quisque tristique lacus velit, quis blandit erat dapibus eget. Vivamus sem urna, sodales a tempor eu, rhoncus et ligula.
+        </p>
+        <p>
+            Duis ac consectetur turpis. Sed odio justo, mollis nec condimentum a, convallis non ante. Donec quis condimentum erat, non tempus arcu. Vestibulum pulvinar, mi quis cursus elementum, sapien turpis viverra nisl, ac iaculis nulla quam accumsan magna. Sed vel nibh tellus. Suspendisse eu felis sed elit pharetra efficitur. Integer faucibus nisi id nisl condimentum tincidunt. Sed quam odio, tempus nec cursus eu, vestibulum et urna. Aenean quam dolor, feugiat vitae viverra ac, condimentum eget ante. Aenean est risus, lacinia a ipsum sit amet, tempor porttitor lorem. Donec justo lorem, blandit at nulla et, sodales consectetur velit. Nam tincidunt augue orci, in sollicitudin arcu dapibus ac.
+        </p>
+
+    </div>
+    <div class="col-sm-6">
+        <div class="carousel slide" data-ride="carousel" id="car1">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="img-fluid" src="{% static 'images/c1.jpg' %}" />
+                </div>
+                <div class="carousel-item">
+                    <img class="img-fluid" src="{% static 'images/c2.jpg' %}" />
+                </div>
+                <div class="carousel-item">
+                    <img class="img-fluid" src="{% static 'images/c3.jpg' %}" />
+                </div>
+                <div class="carousel-item">
+                    <img class="img-fluid" src="{% static 'images/c4.jpg' %}" />
+                </div>
+            </div>
+            <a href="#car1" data-slide="prev" class="carousel-control-prev"> <span
+                class="carousel-control-prev-icon"></span>
+            </a> 
+            <a href="#car1" data-slide="next" class="carousel-control-next"> <span
+                class="carousel-control-next-icon"></span>
+            </a>
+        
+        </div>
+        
+        
+        </div>
+</div>
+<hr>
+<div class="row m-2">
+    <p>
+        Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Phasellus ut pulvinar metus, a sollicitudin libero. Nullam libero massa, sodales ut laoreet sed, posuere sed velit. Nulla tempor, urna vel vestibulum tincidunt, purus ipsum rhoncus ante, ut bibendum lacus turpis et nisi. In consectetur libero non felis aliquam, eget ultricies diam finibus. Morbi interdum varius ultrices. Praesent auctor magna in sodales ullamcorper. Nam a molestie lacus, non tempor magna. Donec eu justo eu massa venenatis faucibus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas non tellus tortor. Praesent fringilla sem eu cursus fermentum.
+    </p>
+    <p>
+        Cras consectetur nisi non purus sagittis dignissim sit amet placerat metus. Donec ut varius elit, at cursus felis. Mauris placerat tempor diam quis vehicula. Donec aliquam sem urna, a euismod ipsum tristique quis. Ut cursus augue id massa tristique, id sollicitudin felis consequat. Vestibulum blandit molestie massa eget faucibus. In varius magna a vehicula aliquet. Quisque tristique mi et quam sodales eleifend. Fusce volutpat eros sit amet elementum convallis. Cras dapibus massa eget lorem laoreet sodales. Morbi a porta quam, ut accumsan dolor. Aliquam convallis ac dolor in tincidunt. Nullam massa sapien, dapibus sed feugiat quis, consequat quis dolor. Suspendisse hendrerit dui nec commodo aliquam. Etiam at justo vitae magna dapibus pulvinar in vel nisi.
+    </p>
+</div>
+<hr>
+{% endblock %}

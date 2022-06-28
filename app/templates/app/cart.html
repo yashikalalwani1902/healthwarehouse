@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1 class="text-uppercase text-center"> Cart Page </h1>
+<hr>
+<div class="row">
+    <div class="col-md-6">
+        <div class="pt-3 pl-5 pr-5 pb-1">
+         <h6 class="text-uppercase text-center">Medicine's Preview:</h6><br>
+         <img class="img-thumbnail" width="100%" src="/media/{{ med.medicine_img }}" alt="Medicine image not found">
+        </div>
+     </div>
+
+  <div class="col-md-6">
+    <div class=" mt-5 text-justify">
+         <h5 >Name :  {{ med.name }} </h5> 
+         <p >About :  {{ med.description }} </p> 
+         <p >Price :  {{ med.price }} </p>
+         <h6 >Manufactured Date :  {{ med.mfg_date }} </h6>
+         <h6 >Expiry Date :  {{ med.exp_date }} </h6>
+         <p >Published Date :  {{ med.cr_date }} </p>
+         <form action="{% url 'med_order' %}" method="POST">
+          {% csrf_token %}
+             <input type="hidden" name="m_id" value="{{ med.id }}" > 
+             <label for="qty">Quantity : </label>
+             <input required class="form-control mb-3" type="number" name="qty" max="50" min="1" value=1 step="1">
+             <input type="submit" class="btn btn-secondary btn-block" value="Order">
+         <a href="{% url 'store' %}" class="btn btn-outline-secondary btn-block">Back</a>
+         </form>
+          
+    </div>
+</div>   
+
+<!-- name, description, medicine_img, price 
+mfg_date , exp_date ,cr_date
+-->
+</div>
+{% endblock %}

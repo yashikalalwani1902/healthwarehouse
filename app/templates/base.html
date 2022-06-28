@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>HealthWarehouse</title>
+
+	<link rel="stylesheet" href="/static/vender/bs/css/bootstrap.min.css" />
+	<script src="/static/vender/jquery-3.3.1.min.js"></script>
+	<script src="/static/vender/popper.min.js"></script>
+	<script src="/static/vender/bs/js/bootstrap.min.js"></script>
+
+	<link rel="stylesheet" href="/static/vender/fa/css/font-awesome.min.css">
+
+	<link href="/static/style.css" rel="stylesheet" />
+</head>
+
+
+<body>
+	<header>
+		<img class="img-fluid" style="height: 250px; width: 100%" src="/static/images/header.jpg" />
+		<!-- <style>
+.navbar-brand{
+	font-size: 26px;
+	font-weight: bold;
+}
+.nav-link {
+	font-size: 22px;
+	color: black;
+}
+</style>
+-->
+		<nav class="navbar navbar-expand-md bg-dark">
+			<a class="navbar-brand   text-light">HealthWarehouse</a>
+			<button class="navbar-toggler" data-toggle="collapse" data-target="#n1">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="nav-bar">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item"><a class="nav-link  text-light" href="/app/index">Home</a></li>
+					<li class="nav-item"><a class="nav-link  text-light" href="/app/about">About</a></li>
+					<li class="nav-item"><a class="nav-link  text-light" href="/app/contact">Contact</a></li>
+					
+				</ul>
+
+				<ul class="navbar-nav ml-auto">
+				<li class="nav-item"><a class="nav-link   text-light" href="/app/store">Store</a></li>
+
+					{% if user.is_authenticated %}
+					
+					{% if user.is_superuser %}
+					<li class="nav-item"><a class="nav-link   text-light" href="/admin">Admin</a></li>
+					
+					{% else %}
+					<li class="nav-item"><a class="nav-link   text-light" href="/app/orders">Order</a></li>
+
+					<li class="nav-item"><a class="nav-link   text-light"
+							href="/app/profile/edit/{{user.profile.id}}">Edit Profile</a></li>
+					{% endif %}
+					{% endif %}
+				</ul>
+				<ul class="navbar-nav ml-auto">
+					{% if user.is_authenticated %}
+					<li class="nav-item"><a class="nav-link  text-light" href="/accounts/logout">Logout</a></li>
+					{% else %}
+					<li class="nav-item"><a class="nav-link  text-light" href="/accounts/login">Login</a></li>
+					{% endif %}
+				</ul>
+			</div>
+		</nav>
+	</header>
+	<main class="container-fluid p-4">
+		{% block content %}
+		<!-- this is home page sub -->
+		{% endblock %}
+	</main>
+	<footer class="text-center pt-3 pb-3 text-light bg-dark" style="font-size: 16px;">
+		<div class="row">
+			<div class="col-sm-4">
+				<h3>Address</h3>
+				<hr>
+				<p>Near Ghadi Chowk, Raipur, Chhattisgarh 492001</p>
+			</div>
+
+			<div class="col-sm-8">
+				<h3>Follow Us On</h3>
+				<hr>
+				<div class="d-flex justify-content-around">
+					<a href="#" style="color:white"><i class="fa fa-facebook-official "></i> Facebook</a>
+					<a href="#" style="color:white"><i class="fa fa-instagram "></i> Instagram</a>
+					<a href="#" style="color:white"><i class="fa fa-twitter "></i> Twitter</a>
+					<a href="https://www.youtube.com/c/EffconTechnology" style="color:white">
+						<i style="color:white" class="fa fa-youtube "></i> Youtube</a>
+
+				</div>
+			</div>
+
+		</div>
+		<hr>
+		<p>Copyright &#169; HealthWarehouse 2021 </p>
+	</footer>
+</body>
+
+</html>
